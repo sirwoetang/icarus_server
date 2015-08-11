@@ -17,7 +17,7 @@ elif _platform == "win32":
 
 # set the secret key.  keep this really secret:
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
-app.debug = True
+app.debug = False
 
 
 print("App Created...")
@@ -114,12 +114,8 @@ def render_vehicle():
 def render_fuel_table():
     return render_template('fuel_table.html')
 
-
-
-
-
 if __name__ == '__main__':
     # Bind to PORT if defined, otherwise default to 5000.
     import os
     port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
+    app.run(debug=True, use_reloader=False, host='0.0.0.0', port=port)
