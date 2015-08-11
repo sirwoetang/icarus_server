@@ -87,7 +87,7 @@ class Event(db.Model):
         self.type = type
         self.value = value
         self.device_id = device_id
-        self.registered_on = datetime.utcnow()
+        self.created_on = datetime.utcnow()
 
 print("Classes Created...")
 db.create_all()
