@@ -129,8 +129,7 @@ def render_vehicle():
 def render_fuel_table():
     return render_template('fuel_table.html')
 
-0
-00
+
 @app.route('/api/v1/data_logger', methods = ['POST'])
 def api_solar_logger():
     from flask import request
