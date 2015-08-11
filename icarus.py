@@ -74,6 +74,21 @@ class User(db.Model):
     def __repr__(self):
         return '<User %r>' % (self.username)
 
+
+class Event(db.Model):
+    __tablename__ = "event"
+    id = db.Column(db.Integer, primary_key=True)
+    type = db.Column(db.String(80))
+    value=db.Column(db.Float(10))
+    device_id=db.Column(db.Numeric(10))
+    created_on = db.Column(db.DateTime)
+
+    def __init__(self, type, value, device_id):
+        self.type = type
+        self.value = value
+        self.device_id = device_id
+        self.registered_on = datetime.utcnow()
+
 print("Classes Created...")
 db.create_all()
 db.session.commit()
@@ -113,6 +128,24 @@ def render_vehicle():
 @app.route('/fuel_table')
 def render_fuel_table():
     return render_template('fuel_table.html')
+
+0
+00
+@app.route('/api/v1/data_logger', methods = ['POST'])
+def api_solar_logger():
+    from flask import request
+    content = request.json
+
+    if 'type' in content:
+        try:
+            event = Event(content['type'],content['value'],content['device_id'])
+            db.session.add(event)
+            db.session.commit()
+            return 'Success'
+        except Exception:
+            db.session.rollback()
+            return 'Failure'
+    return 'Failure'
 
 if __name__ == '__main__':
     # Bind to PORT if defined, otherwise default to 5000.
