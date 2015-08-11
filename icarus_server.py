@@ -82,7 +82,7 @@ class Event(db.Model):
     type = db.Column(db.String(80))
     value=db.Column(db.Float(10))
     device_id=db.Column(db.Numeric(10))
-    created_date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+    created_on = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 
     def __init__(self, type, value, device_id):
         self.type = type
