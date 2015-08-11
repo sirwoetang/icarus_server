@@ -31,6 +31,7 @@ from sqlalchemy.orm import relationship
 from datetime import datetime
 from sqlalchemy.types import NVARCHAR
 import random
+import datetime
 from flask import render_template
 
 
@@ -81,13 +82,12 @@ class Event(db.Model):
     type = db.Column(db.String(80))
     value=db.Column(db.Float(10))
     device_id=db.Column(db.Numeric(10))
-    created_on = db.Column(db.DateTime)
+    created_date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 
     def __init__(self, type, value, device_id):
         self.type = type
         self.value = value
         self.device_id = device_id
-        self.created_on = datetime.utcnow()
 
 print("Classes Created...")
 db.create_all()
