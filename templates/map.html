@@ -1,0 +1,278 @@
+
+<!DOCTYPE html>
+<!--[if IE 9 ]><html class="ie ie9" lang="en" class="no-js"> <![endif]-->
+<!--[if !(IE)]><!--><html lang="en" class="no-js"> <!--<![endif]-->
+<head>
+	<title>Dashboard | Solar Trucking</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="description" content="">
+	<meta name="author" content="The Develovers">
+
+	<!-- CSS -->
+	<link href="../static/assets/css/bootstrap.css" rel="stylesheet" type="text/css">
+	<link href="../static/assets/css/font-awesome.css" rel="stylesheet" type="text/css">
+	<link href="../static/assets/css/main.css" rel="stylesheet" type="text/css">
+
+	<!-- CSS for demo style switcher. you can remove this -->
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+
+
+	<!-- Fav and touch icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../static/assets/ico/kingadmin-favicon144x144.png">
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../static/assets/ico/kingadmin-favicon114x114.png">
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../static/assets/ico/kingadmin-favicon72x72.png">
+	<link rel="apple-touch-icon-precomposed" sizes="57x57" href="../static/assets/ico/kingadmin-favicon57x57.png">
+	<link rel="shortcut icon" href="../static/assets/ico/favicon.png">
+	<style> #map { height: 600px; }</style>
+
+</head>
+<body class="dashboard">
+	<!-- WRAPPER -->
+	<div class="wrapper">
+
+		<!-- TOP BAR -->
+		<div class="top-bar">
+			<div class="container">
+				<div class="row">
+					<!-- logo -->
+					<div class="col-md-2 logo">
+						<a href="/"><img src="../static/assets/img/kingadmin-logo-white.png"  /></a>
+						<h1 class="sr-only">Solar Trucking/h1>
+					</div>
+					<!-- end logo -->
+					<div class="col-md-10">
+						<div class="row">
+							<div class="col-md-3">
+
+							</div>
+							<div class="col-md-9">
+								<div class="top-bar-right">
+									<!-- responsive menu bar icon -->
+									<a href="#" class="hidden-md hidden-lg main-nav-toggle"><i class="fa fa-bars"></i></a>
+
+									<div class="notifications">
+										<ul>
+											<!-- notification: general -->
+											<li class="notification-item general">
+												<div class="btn-group">
+													<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+														<i class="fa fa-bell"></i><span class="count">1</span>
+														<span class="circle"></span>
+													</a>
+													<ul class="dropdown-menu" role="menu">
+														<li class="notification-header">
+															<em>You have 1 notifications</em>
+														</li>
+														<li>
+															<a href="#">
+																<i class="fa fa-comment green-font"></i>
+																<span class="text">You have joined EnergiDrop Solar Monitor</span>
+																<span class="timestamp">1 minute ago</span>
+															</a>
+														</li>
+
+														<li class="notification-footer">
+															<a href="#">View All Notifications</a>
+														</li>
+													</ul>
+												</div>
+											</li>
+											<!-- end notification: general -->
+										</ul>
+									</div>
+
+									<!-- logged user and the menu -->
+									<div class="logged-user">
+										<div class="btn-group">
+											<a href="#" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
+												<img src="../static/assets/img/solar.png" />
+												<span class="name">MetroBus Manager</span> <span class="caret"></span>
+											</a>
+											<ul class="dropdown-menu" role="menu">
+												<li>
+													<a href="/">
+														<i class="fa fa-user"></i>
+														<span class="text">Profile</span>
+													</a>
+												</li>
+
+												<li>
+													<a href="#">
+														<i class="fa fa-power-off"></i>
+														<span class="text">Logout</span>
+													</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<!-- end logged user and the menu -->
+								</div><!-- /top-bar-right -->
+							</div>
+						</div><!-- /row -->
+					</div>
+				</div><!-- /row -->
+			</div><!-- /container -->
+		</div><!-- /top -->
+
+
+		<!-- BOTTOM: LEFT NAV AND RIGHT MAIN CONTENT -->
+		<div class="bottom">
+			<div class="container">
+				<div class="row">
+					<!-- left sidebar -->
+					<div class="col-md-2 left-sidebar">
+
+						<!-- main-nav -->
+						<nav class="main-nav">
+
+							<ul class="main-menu">
+								<li><a href="/"><i class="fa fa-dashboard fa-fw"></i><span class="text">Dashboard</span></a></li>
+                                <li ><a href="/charts"><i class="fa fa-bar-chart-o fw"></i><span class="text">Charts</span></a></li>
+								<li ><a href="#" class="js-sub-menu-toggle"><i class="fa fa-table fw"></i><span class="text">Tables</span>
+									<i class="toggle-icon fa fa-angle-left"></i></a>
+									<ul class="sub-menu ">
+										<li ><a href="/vehicle_table"><span class="text">Vehicle	Table</span></a></li>
+										<li ><a href="/fuel_table"><span class="text">Fuel	Table</span></a></li>
+									</ul>
+								</li>
+								<li class="active"><a href="/map"><i class="fa fa-globe fa-fw"></i><span class="text">Map</span></a></li>
+							</ul>
+						</nav><!-- /main-nav -->
+
+						<div class="sidebar-minified js-toggle-minified">
+							<i class="fa fa-angle-left"></i>
+						</div>
+
+						<!-- sidebar content -->
+						<div class="sidebar-content">
+							<div class="panel panel-default">
+								<div class="panel-heading"><h5><i class="fa fa-lightbulb-o"></i> Tips</h5></div>
+								<div class="panel-body">
+									<p>You can keep track of your solar vehicles on this page.</p>
+								</div>
+							</div>
+
+
+						</div>
+						<!-- end sidebar content -->
+					</div>
+					<!-- end left sidebar -->
+
+					<!-- content-wrapper -->
+
+					<div class="col-md-10 content-wrapper">
+						<div class="row">
+							<div class="col-md-4 ">
+								<ul class="breadcrumb">
+									<li><i class="fa fa-home"></i><a href="#">Home</a></li>
+									<li class="active">Map</li>
+								</ul>
+							</div>
+							
+						</div>
+
+						<!-- main -->
+						<div class="content">
+							<div class="main-header">
+								<h2>DASHBOARD</h2>
+								<em>Bird's Eye view of your vehicles</em>
+							</div>
+
+
+							<div class="main-content">
+								<div class="row">
+									<div class="col-md-9">
+
+                                        <div class="widget">
+                                            <div class="widget-header">
+                                                <h3><i class="fa fa-bar-chart-o"></i> Tracking Map</h3> <em>- Physical Locations of Vehicles </em>
+                                                <div class="btn-group widget-header-toolbar">
+                                                    <a href="#" id="tour-focus" title="Focus" class="btn-borderless btn-focus"><i class="fa fa-eye"></i></a>
+                                                    <a href="#" title="Expand/Collapse" class="btn-borderless btn-toggle-expand"><i class="fa fa-chevron-up"></i></a>
+                                                    <a href="#" title="Remove" class="btn-borderless btn-remove"><i class="fa fa-times"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="widget-content">
+                                                <div id="map"></div>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+							</div><!-- /main-content -->
+						</div><!-- /main -->
+					</div><!-- /content-wrapper -->
+				</div><!-- /row -->
+			</div><!-- /container -->
+		</div>
+		<!-- END BOTTOM: LEFT NAV AND RIGHT MAIN CONTENT -->
+		<div class="push-sticky-footer"></div>
+	</div><!-- /wrapper -->
+
+	<!-- FOOTER -->
+	<footer class="footer">
+		&copy; 2014 Energidrop
+	</footer>
+	<!-- END FOOTER -->
+
+
+
+	<!-- Javascript -->
+	<script src="../static/assets/js/jquery-2.1.1.js"></script>
+	<script src="../static/assets/js/bootstrap.js"></script>
+	<script src="../static/assets/js/modernizr.js"></script>
+	<script src="../static/assets/js/bootstrap-tour.custom.js"></script>
+	<script src="../static/assets/js/king-common.js"></script>
+	<script src="../static/assets/js/stat/jquery.easypiechart.min.js"></script>
+	<script src="../static/assets/js/raphael-2.1.0.min.js"></script>
+	<script src="../static/assets/js/stat/flot/jquery.flot.min.js"></script>
+	<script src="../static/assets/js/stat/flot/jquery.flot.resize.min.js"></script>
+	<script src="../static/assets/js/stat/flot/jquery.flot.time.min.js"></script>
+	<script src="../static/assets/js/stat/flot/jquery.flot.pie.min.js"></script>
+	<script src="../static/assets/js/stat/flot/jquery.flot.tooltip.min.js"></script>
+	<script src="../static/assets/js/jquery.sparkline.min.js"></script>
+	<script src="../static/assets/js/datatable/jquery.dataTables.min.js"></script>
+	<script src="../static/assets/js/datatable/jquery.dataTables.bootstrap.js"></script>
+	<script src="../static/assets/js/jquery.mapael.js"></script>
+	<script src="../static/assets/js/maps/usa_states.js"></script>
+	<script src="../static/assets/js/king-chart-stat.js"></script>
+	<script src="../static/assets/js/king-table.js"></script>
+	<script src="../static/assets/js/king-components.js"></script>
+	<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+
+<script>
+
+	// create a map in the "map" div, set the view to a given place and zoom
+var map = L.map('map').setView([-26.1930217,28.0272942], 10);
+
+// add an OpenStreetMap tile layer
+L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+// add a marker in the given location, attach some popup content to it and open the popup
+L.marker([-26.1930217,28.0272942]).addTo(map)
+    .bindPopup('Metro Bus Depot, Midrand.')
+    .openPopup();
+
+L.marker([-26.1955923,28.0355901]).addTo(map)
+    .bindPopup('Metro Bus Depot, Midrand.')
+
+L.marker([-26.2955923,28.0355901]).addTo(map)
+    .bindPopup('Metro Bus Depot, Midrand.')
+
+L.marker([-26.3930217,28.0272942]).addTo(map)
+    .bindPopup('Metro Bus Depot, Midrand.')
+
+L.marker([-26.1955923,28.2355901]).addTo(map)
+    .bindPopup('Metro Bus Depot, Midrand.')
+
+L.marker([-26.1955923,28.1355901]).addTo(map)
+    .bindPopup('Metro Bus Depot, Midrand.')
+
+</script>
+
+</body>
+</html>
+
