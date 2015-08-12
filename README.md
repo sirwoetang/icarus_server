@@ -9,3 +9,19 @@ also use pip3 to install everything
 postgres remote access:
 
 http://www.cyberciti.biz/tips/postgres-allow-remote-access-tcp-connection.html
+
+
+# Grab psycopg2 and pip
+apt-get install python3-pip python3-psycopg2
+
+# Remove the Python 2.7 version of gunicorn, so we can...
+pip uninstall gunicorn
+
+# Install the Python 3 version of gunicorn, and a couple of dependencies.
+pip3 install gunicorn tornado django
+# Sadly, at time of writing, gevent isn't Python 3 compatible... But tornado is!
+# So, switch them out with a little sed magic
+sed 's/worker_class = '\''gevent'\''/worker_class='\''tornado'\''/' /etc/gunicorn.d/gunicorn.py -i.orig
+
+# Restart gunicorn to make the changes take effect...
+service gunicorn restart
