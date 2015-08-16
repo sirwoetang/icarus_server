@@ -130,7 +130,7 @@ def render_fuel_table():
     return render_template('fuel_table.html')
 
 
-@app.route('/api/v1/data_logger', methods = ['POST'])
+@app.route('/api/v1/data_logger', methods = ['POST', 'GET'])
 def api_solar_logger():
     from flask import request
     content = request.json
@@ -140,9 +140,11 @@ def api_solar_logger():
             event = Event(content['type'],content['value'],content['device_id'])
             db.session.add(event)
             db.session.commit()
+            print("Success")
             return 'Success'
         except Exception:
             db.session.rollback()
+            print("Failure")
             return 'Failure'
     return 'Failure'
 
