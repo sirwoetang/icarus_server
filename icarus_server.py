@@ -134,6 +134,12 @@ def render_fuel_table():
 def api_solar_logger():
     from flask import request
     content = request.json
+    if request.method == 'GET':
+        print('GET')
+    else:
+        print('OTHER')
+
+
 
     if 'type' in content:
         try:
