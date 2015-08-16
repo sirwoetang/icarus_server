@@ -12,7 +12,7 @@ elif _platform == "darwin":
     pass
 elif _platform == "win32":
     # Windows...
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://postgres:koelie@localhost:5432/icarus'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://postgres:postgres@localhost:5432/icarus'
     pass
 
 # set the secret key.  keep this really secret:
@@ -138,8 +138,6 @@ def api_solar_logger():
         print('GET')
     else:
         print('OTHER')
-
-
 
     if 'type' in content:
         try:
