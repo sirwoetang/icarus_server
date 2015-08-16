@@ -25,3 +25,11 @@ sed 's/worker_class = '\''gevent'\''/worker_class='\''tornado'\''/' /etc/gunicor
 
 # Restart gunicorn to make the changes take effect...
 service gunicorn restart
+
+
+###############################################
+# To start SERVERS:
+sudo start icarus
+sudo start icarus_tcp //listens on localhost 8888
+
+logs: sudo /var/log/upstart/icarus.log only riught after server has been restarted
