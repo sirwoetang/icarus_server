@@ -32,7 +32,7 @@ from datetime import datetime
 from sqlalchemy.types import NVARCHAR
 import random
 import datetime
-from flask import render_template
+from flask import render_template, redirect
 
 
 class User(db.Model):
@@ -112,7 +112,7 @@ def render_home():
 
 @app.route('/logout')
 def render_logout():
-    return render_template('login.html')
+    return redirect("/login", code=302)
 
 
 @app.route('/login')
