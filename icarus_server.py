@@ -110,6 +110,16 @@ def render_home():
     return render_template('index.html')
 
 
+@app.route('/logout')
+def render_logout():
+    return render_template('login.html')
+
+
+@app.route('/login')
+def render_login():
+    return render_template('login.html')
+
+
 @app.route('/map')
 def render_map():
     return render_template('map.html')
