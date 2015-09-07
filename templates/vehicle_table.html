@@ -24,6 +24,12 @@
 	<link rel="apple-touch-icon-precomposed" sizes="57x57" href="../static/assets/ico/kingadmin-favicon57x57.png">
 	<link rel="shortcut icon" href="../static/assets/ico/favicon.png">
 
+         <!-- KENDO CSS-->
+    <link rel="stylesheet" href="http://cdn.kendostatic.com/2015.1.429/styles/kendo.common-material.min.css"/>
+    <link rel="stylesheet" href="http://cdn.kendostatic.com/2015.1.429/styles/kendo.material.min.css"/>
+    <link rel="stylesheet" href="http://cdn.kendostatic.com/2015.1.429/styles/kendo.dataviz.min.css"/>
+    <link rel="stylesheet" href="http://cdn.kendostatic.com/2015.1.429/styles/kendo.dataviz.material.min.css"/>
+
 </head>
 <body class="dashboard">
 	<!-- WRAPPER -->
@@ -184,7 +190,7 @@
 
                                         <div class="widget">
                                             <div class="widget-header">
-                                                <h3><i class="fa fa-truck"></i> Vehicle Table</h3> <em>- Energy and CO2 levels </em>
+                                                <h3><i class="fa fa-truck"></i> Vehicle Table</h3> <em>- List of all vehicles in the system. </em>
                                                 <div class="btn-group widget-header-toolbar">
                                                     <a href="#" title="Focus" class="btn-borderless btn-focus"><i class="fa fa-eye"></i></a>
                                                     <a href="#" title="Expand/Collapse" class="btn-borderless btn-toggle-expand"><i class="fa fa-chevron-up"></i></a>
@@ -192,7 +198,114 @@
                                                 </div>
                                             </div>
                                             <div class="widget-content">
+                                                <table class="table" id="grid">
+                                                    <tbody>
+                                                        <col style="width:5%">
+                                                        <col style="width:10%">
+                                                        <col style="width:10%">
+                                                        <col style="width:10%">
+                                                        <col style="width:10%">
+                                                        <col style="width:10%">
+                                                        <col style="width:10%">
+                                                        <col style="width:10%">
+                                                        <thead>
+                                                            <th align='center'>Planning</th>
+                                                            <th>Registration</th>
+                                                            <th>Fleet Number</th>
+                                                            <th>Vehicle Type</th>
+                                                            <th>Primary Capacity</th>
+                                                            <th>Secondary Capacity</th>
+                                                            <th>Tertiary Capacity</th>
+                                                            <th>Domicile</th>
+                                                            <th>Driver</th>
+                                                        </thead>
 
+                                                         <tr>
+                                                            <td align='left'><input type="checkbox" class="activate_vehicle" checked="checked"/></td>
+                                                            <td>ABC 1122 </td>
+                                                            <td>1222</td>
+                                                             <td>Van</td>
+                                                             <td>4000</td>
+                                                             <td>24000</td>
+                                                             <td>60000</td>
+                                                             <td>None</td>
+                                                             <td></td>
+                                                        </tr>
+
+                                                         <tr>
+                                                            <td align='left'><input type="checkbox" class="activate_vehicle" checked="checked"/></td>
+                                                            <td>ABC 1123 </td>
+                                                            <td>1223</td>
+                                                             <td>Van</td>
+                                                             <td>4000</td>
+                                                             <td>24000</td>
+                                                             <td>60000</td>
+                                                             <td>None</td>
+                                                             <td></td>
+                                                        </tr>
+
+                                                         <tr>
+                                                            <td align='left'><input type="checkbox" class="activate_vehicle" checked="checked"/></td>
+                                                            <td>ABC 1124 </td>
+                                                            <td>1224</td>
+                                                             <td>Van</td>
+                                                             <td>4000</td>
+                                                             <td>24000</td>
+                                                             <td>60000</td>
+                                                             <td>None</td>
+                                                             <td></td>
+                                                        </tr>
+
+                                                         <tr>
+                                                            <td align='left'><input type="checkbox" class="activate_vehicle" checked="checked"/></td>
+                                                            <td>ABC 1125 </td>
+                                                            <td>1225</td>
+                                                             <td>Van</td>
+                                                             <td>4000</td>
+                                                             <td>24000</td>
+                                                             <td>60000</td>
+                                                             <td>None</td>
+                                                             <td></td>
+                                                        </tr>
+
+                                                         <tr>
+                                                            <td align='left'><input type="checkbox" class="activate_vehicle" checked="checked"/></td>
+                                                            <td>NUR 1123 </td>
+                                                            <td>1223</td>
+                                                             <td>Van</td>
+                                                             <td>4000</td>
+                                                             <td>24000</td>
+                                                             <td>60000</td>
+                                                             <td>None</td>
+                                                             <td></td>
+                                                        </tr>
+
+                                                         <tr>
+                                                            <td align='left'><input type="checkbox" class="activate_vehicle" checked="checked"/></td>
+                                                            <td>NUR 1124 </td>
+                                                            <td>1224</td>
+                                                             <td>Van</td>
+                                                             <td>4000</td>
+                                                             <td>24000</td>
+                                                             <td>60000</td>
+                                                             <td>None</td>
+                                                             <td></td>
+                                                        </tr>
+
+                                                         <tr>
+                                                            <td align='left'><input type="checkbox" class="activate_vehicle" checked="checked"/></td>
+                                                            <td>NUR 1125 </td>
+                                                            <td>1225</td>
+                                                             <td>Van</td>
+                                                             <td>4000</td>
+                                                             <td>24000</td>
+                                                             <td>60000</td>
+                                                             <td>None</td>
+                                                             <td></td>
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>
                                             </div>
 								        </div>
 
@@ -264,7 +377,7 @@
 	<script src="../static/assets/js/modernizr.js"></script>
 	<script src="../static/assets/js/bootstrap-tour.custom.js"></script>
 	<script src="../static/assets/js/king-common.js"></script>
-	<script src="demo-style-switcher/assets/js/deliswitch.js"></script>
+	<!--<script src="demo-style-switcher/assets/js/deliswitch.js"></script>-->
 	<script src="../static/assets/js/stat/jquery.easypiechart.min.js"></script>
 	<script src="../static/assets/js/raphael-2.1.0.min.js"></script>
 	<script src="../static/assets/js/stat/flot/jquery.flot.min.js"></script>
@@ -280,6 +393,20 @@
 	<script src="../static/assets/js/king-chart-stat.js"></script>
 	<script src="../static/assets/js/king-table.js"></script>
 	<script src="../static/assets/js/king-components.js"></script>
+	<script src="../static/assets/js/kendo.all.min.js"></script>
+	<script>
+
+                $(document).ready(function() {
+                    $("#grid").kendoGrid({
+                         height: 550,
+                        sortable: true,
+                        reorderable: true,
+                        filterable: true,
+                        resizable: true
+                    });
+                });
+
+    </script>
 
 </body>
 </html>
