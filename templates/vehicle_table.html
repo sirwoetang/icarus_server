@@ -233,50 +233,6 @@
                                                              <td>60000</td>
                                                         </tr>
 
-                                                         <tr>
-                                                            <td>3 </td>
-                                                            <td>ABC 1124 </td>
-                                                             <td>19.1</td>
-                                                             <td>4000</td>
-                                                             <td>24000</td>
-                                                             <td>60000</td>
-                                                        </tr>
-
-                                                         <tr>
-                                                            <td>4 </td>
-                                                            <td>ABC 1125 </td>
-                                                             <td>19.1</td>
-                                                             <td>4000</td>
-                                                             <td>24000</td>
-                                                             <td>60000</td>
-                                                        </tr>
-
-                                                         <tr>
-                                                            <td>5 </td>
-                                                            <td>NUR 1123 </td>
-                                                             <td>19.1</td>
-                                                             <td>4000</td>
-                                                             <td>24000</td>
-                                                             <td>60000</td>
-                                                        </tr>
-
-                                                         <tr>
-                                                            <td>6 </td>
-                                                            <td>NUR 1124 </td>
-                                                             <td>19.1</td>
-                                                             <td>4000</td>
-                                                             <td>24000</td>
-                                                             <td>60000</td>
-                                                        </tr>
-
-                                                         <tr>
-                                                            <td>7 </td>
-                                                            <td>NUR 1125 </td>
-                                                             <td>19.1</td>
-                                                             <td>4000</td>
-                                                             <td>24000</td>
-                                                             <td>60000</td>
-                                                        </tr>
 
                                                     </tbody>
                                                 </table>
@@ -369,7 +325,7 @@
 	<script src="../static/assets/js/king-table.js"></script>
 	<script src="../static/assets/js/king-components.js"></script>
 	<script src="../static/assets/js/kendo.all.min.js"></script>
-    <script src="../static/js/insolation.json"></script>
+    <script src="../static/js/data.json"></script>
 	<script>
 
         function onDataBound(e) {
@@ -442,10 +398,11 @@
 
         var base = []
         var solar = []
-
-        for (i = 0; i < insolation.length; i++) {
-            base.push([insolation[i]['UTC'],insolation[i]['BASE']])
-            solar.push([insolation[i]['UTC'],insolation[i]['INSOLATION']])
+        console.log(window.previous_row)
+        console.log("Should get vehicle id here to display corresponding data")
+        for (i = 0; i < solar_data.length; i++) {
+//            base.push([solar_data[i]['t'],solar_data[i]['BASE']])
+            solar.push([solar_data[i]['t'],solar_data[i]['v1']])
         }
 
         /*
