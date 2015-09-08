@@ -412,11 +412,17 @@ function update_chart(vehicle_id)
 
         var base = []
         var solar = []
+        var sday = []
+        var sweek = []
+        var smonth = []
+        var syear = []
         console.log(window.previous_row)
         console.log("Should get vehicle id here to display corresponding data")
         for (i = 0; i < solar_data.length; i++) {
 //            base.push([solar_data[i]['t'],solar_data[i]['BASE']])
             solar.push([solar_data[i]['t'],solar_data[i][data_index]])
+            sday.push([solar_data[i]['t'],solar_data[i][data_index]])
+
         }
 
         /*
@@ -447,7 +453,7 @@ function update_chart(vehicle_id)
 //					}
 //				},
 				{
-					data: solar,
+					data: sday,
 					label: "Solar Power (kW)",
 					lines: {
 						show: true,
@@ -510,6 +516,7 @@ function update_chart(vehicle_id)
 //		var base = [
 //			[gt(2015, 03, 23), 310], [gt(2015, 03, 24), 205], [gt(2015, 03, 25), 250], [gt(2015, 03, 26), 230], [gt(2015, 03, 27), 270], [gt(2015, 03, 28), 110], [gt(2015, 03, 29), 55]
 //		];
+
 
 		var solar = [
 			[gt(2015, 03, 23), 210], [gt(2015, 03, 24),20], [gt(2015, 03, 25),50], [gt(2015, 03, 26),130], [gt(2015, 03, 27),45], [gt(2015, 03, 28),20], [gt(2015, 03, 29),30]
@@ -611,6 +618,12 @@ function update_chart(vehicle_id)
 			[gt(2013, 10, 29), 125], [gt(2013, 10, 30), 110], [gt(2013, 10, 31), 130]
 		];
 
+        var sm
+
+        if (solar_data[i]['t'] > (1441771155 - 2629743)) {
+            smonth.push([solar_data[i]['t'],solar_data[i][data_index]])
+        }
+
 		var plot = $.plot(placeholder,
 			[
 //				{
@@ -625,7 +638,7 @@ function update_chart(vehicle_id)
 //					}
 //				},
 				{
-					data: val,
+					data: smonth,
 					label: "Solar Power (kW)"
 				}
 			],
