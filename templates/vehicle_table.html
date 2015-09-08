@@ -339,6 +339,7 @@
                 var row = $(this).closest("tr");
                 var rowIdx = $("tr", grid.tbody).index(row);
                 $(row).css("background","#D4E2E2")
+                update_chart(rowIdx)
                 window.previous_row = row
 
 
@@ -357,6 +358,14 @@
 
     </script>
 	<script>
+
+function update_chart(vehicle_id){
+    if (vehicle_id == 0){
+        var data_index = 'v1'
+    } else {
+        var data_index = 'v2'
+    }
+
 
         	//*******************************************
 	/*	FLOT CHART
@@ -402,7 +411,7 @@
         console.log("Should get vehicle id here to display corresponding data")
         for (i = 0; i < solar_data.length; i++) {
 //            base.push([solar_data[i]['t'],solar_data[i]['BASE']])
-            solar.push([solar_data[i]['t'],solar_data[i]['v1']])
+            solar.push([solar_data[i]['t'],solar_data[i][data_index]])
         }
 
         /*
@@ -754,6 +763,8 @@
 			return Math.floor( Math.random() * 80 );
 	}
 
+
+}
 
     </script>
 
