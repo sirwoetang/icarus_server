@@ -206,6 +206,7 @@
                                                         <col style="width:10%">
                                                         <col style="width:10%">
                                                         <col style="width:10%">
+                                                        <col style="width:10%">
                                                         <thead>
                                                             <th>Rank</th>
                                                             <th>Registration</th>
@@ -213,24 +214,27 @@
                                                             <th>Total Fuel Saved (l)</th>
                                                             <th>Total Carbon Emissions (kg)</th>
                                                             <th>Current Power Generation (kW)</th>
+                                                            <th>Date Converted</th>
                                                         </thead>
 
                                                          <tr>
                                                             <td>1 </td>
-                                                            <td>ABC 1122 </td>
-                                                             <td>19.1</td>
-                                                             <td>4000</td>
-                                                             <td>24000</td>
-                                                             <td>60000</td>
+                                                            <td>NUR 1122 </td>
+                                                             <td>1512 kWh</td>
+                                                             <td>432L</td>
+                                                             <td>R6,048</td>
+                                                             <td>2.1 KW</td>
+                                                             <td>2015/07/10</td>
                                                         </tr>
 
                                                          <tr>
                                                             <td>2 </td>
-                                                            <td>ABC 1123 </td>
-                                                             <td>19.1</td>
-                                                             <td>4000</td>
-                                                             <td>24000</td>
-                                                             <td>60000</td>
+                                                            <td>NUR 1123 </td>
+                                                             <td>17045 kWh </td>
+                                                             <td>4810L</td>
+                                                             <td>R68,180 </td>
+                                                             <td>1.5kW</td>
+                                                             <td>2014/10/13</td>
                                                         </tr>
 
 
@@ -347,7 +351,7 @@
 }
                 $(document).ready(function() {
                     $("#grid").kendoGrid({
-                         height: 350,
+                         height: 250,
                         dataBound:onDataBound,
                         sortable: true,
                         reorderable: true,
@@ -530,7 +534,7 @@ function update_chart(vehicle_id)
 //				},
 				{
 					data: solar,
-					label: "Solar",
+					label: "Solar Power (kW)",
 					lines: {
 						show: true,
 						fill: true
