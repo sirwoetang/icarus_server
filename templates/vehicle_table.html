@@ -40,8 +40,8 @@
 			<div class="container">
 				<div class="row">
 					<!-- logo -->
-					<div class="col-md-2 logo" style="height:40px">
-						<a href="/"><img src="../static/assets/img/kingadmin-logo-white.png"  height="30" /></a>
+					<div class="col-md-2 logo" style="height:60px">
+						<a href="/"><img src="../static/assets/img/kingadmin-logo-white.png"  height="45" /></a>
 						<h1 class="sr-only">Solar Trucking/h1>
 					</div>
 					<!-- end logo -->
@@ -410,17 +410,12 @@ function update_chart(vehicle_id)
 	// init flot chart: current week
 	function chartDay(placeholder) {
 
-        var base = []
-        var solar = []
+//        var solar = []
         var sday = []
-        var sweek = []
-        var smonth = []
-        var syear = []
-        console.log(window.previous_row)
-        console.log("Should get vehicle id here to display corresponding data")
+
         for (i = 0; i < solar_data.length; i++) {
 //            base.push([solar_data[i]['t'],solar_data[i]['BASE']])
-            solar.push([solar_data[i]['t'],solar_data[i][data_index]])
+//            solar.push([solar_data[i]['t'],solar_data[i][data_index]])
             sday.push([solar_data[i]['t'],solar_data[i][data_index]])
 
         }
@@ -618,7 +613,7 @@ function update_chart(vehicle_id)
 			[gt(2013, 10, 29), 125], [gt(2013, 10, 30), 110], [gt(2013, 10, 31), 130]
 		];
 
-        var sm
+        var smonth
 
         if (solar_data[i]['t'] > (1441771155 - 2629743)) {
             smonth.push([solar_data[i]['t'],solar_data[i][data_index]])
