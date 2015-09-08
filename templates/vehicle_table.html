@@ -449,7 +449,7 @@ function update_chart(vehicle_id)
 //				},
 				{
 					data: sday,
-					label: "Solar Power (kW)",
+					label: "Solar Power (kWh)",
 					lines: {
 						show: true,
 						fill: true
@@ -516,6 +516,14 @@ function update_chart(vehicle_id)
 		var solar = [
 			[gt(2015, 03, 23), 210], [gt(2015, 03, 24),20], [gt(2015, 03, 25),50], [gt(2015, 03, 26),130], [gt(2015, 03, 27),45], [gt(2015, 03, 28),20], [gt(2015, 03, 29),30]
 		];
+//        var sweek = []
+//        for (i = 0; i < solar_data.length; i=i+23) {
+//            if (solar_data[i]['t'] > (1441771155 - 2629743)) {
+//                sweek.push([solar_data[i]['t'],solar_data[i][data_index]])
+//            }
+//
+//        }
+//        console.log(sweek)
 
 		var plot = $.plot(placeholder,
 			[
@@ -536,7 +544,7 @@ function update_chart(vehicle_id)
 //				},
 				{
 					data: solar,
-					label: "Solar Power (kW)",
+					label: "Solar Power (kWh)",
 					lines: {
 						show: true,
 						fill: true
@@ -575,7 +583,7 @@ function update_chart(vehicle_id)
 			xaxis: {
 				mode: "time",
 				timezone: "browser",
-				minTickSize: [1, "hour"],
+				minTickSize: [1, "minute"],
 				timeformat: "%a",
 				font: { color: "#555" },
 				tickColor: "#fafafa",
@@ -606,18 +614,23 @@ function update_chart(vehicle_id)
 //		];
 
 		var val = [
-			[gt(2013, 10, 1), 20], [gt(2013, 10, 2), 28], [gt(2013, 10, 3), 32], [gt(2013, 10, 4), 40], [gt(2013, 10, 5), 35], [gt(2013, 10, 6), 40], [gt(2013, 10, 7), 45],
-			[gt(2013, 10, 8), 25], [gt(2013, 10, 9), 60], [gt(2013, 10, 10), 48], [gt(2013, 10, 11), 53], [gt(2013, 10, 12), 58], [gt(2013, 10, 13), 60], [gt(2013, 10, 14), 65],
-			[gt(2013, 10, 15), 66], [gt(2013, 10, 16), 60], [gt(2013, 10, 17), 79], [gt(2013, 10, 18), 75], [gt(2013, 10, 19), 34], [gt(2013, 10, 20), 32], [gt(2013, 10, 21), 75],
-			[gt(2013, 10, 22), 88], [gt(2013, 10, 23), 99], [gt(2013, 10, 24), 86], [gt(2013, 10, 25), 83], [gt(2013, 10, 26), 45], [gt(2013, 10, 27), 50], [gt(2013, 10, 28), 100],
-			[gt(2013, 10, 29), 125], [gt(2013, 10, 30), 110], [gt(2013, 10, 31), 130]
+			[gt(2015, 10, 1), 20], [gt(2015, 10, 2), 28], [gt(2015, 10, 3), 32], [gt(2015, 10, 4), 40], [gt(2015, 10, 5), 35], [gt(2015, 10, 6), 40], [gt(2015, 10, 7), 45],
+			[gt(2015, 10, 8), 25], [gt(2015, 10, 9), 60], [gt(2015, 10, 10), 48], [gt(2015, 10, 11), 53], [gt(2015, 10, 12), 58], [gt(2015, 10, 13), 60], [gt(2015, 10, 14), 65],
+			[gt(2015, 10, 15), 66], [gt(2015, 10, 16), 60], [gt(2015, 10, 17), 79], [gt(2015, 10, 18), 75], [gt(2015, 10, 19), 34], [gt(2015, 10, 20), 32], [gt(2015, 10, 21), 75],
+			[gt(2015, 10, 22), 88], [gt(2015, 10, 23), 99], [gt(2015, 10, 24), 86], [gt(2015, 10, 25), 83], [gt(2015, 10, 26), 45], [gt(2015, 10, 27), 50], [gt(2015, 10, 28), 100],
+			[gt(2015, 10, 29), 125], [gt(2015, 10, 30), 110], [gt(2015, 10, 31), 130]
 		];
 
-        var smonth
+//        var smonth = []
+//        for (i = 0; i < solar_data.length; i++) {
+//            if (solar_data[i]['t'] > (1441771155 - 2629743)) {
+//                smonth.push([solar_data[i]['t'],solar_data[i][data_index]])
+//            }
+//
+//        }
+//        console.log(smonth.length)
+//        console.log(val.length)
 
-        if (solar_data[i]['t'] > (1441771155 - 2629743)) {
-            smonth.push([solar_data[i]['t'],solar_data[i][data_index]])
-        }
 
 		var plot = $.plot(placeholder,
 			[
@@ -633,8 +646,8 @@ function update_chart(vehicle_id)
 //					}
 //				},
 				{
-					data: smonth,
-					label: "Solar Power (kW)"
+					data: val,
+					label: "Solar Power (kWh)"
 				}
 			],
 
@@ -707,7 +720,7 @@ function update_chart(vehicle_id)
 //				},
 				{
 					data: val,
-					label: "Solar Power (kW)"
+					label: "Solar Power (kWh)"
 
 				}
 			],
