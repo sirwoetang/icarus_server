@@ -370,9 +370,28 @@
 	<script src="../static/assets/js/kendo.all.min.js"></script>
 	<script>
 
+        function onDataBound(e) {
+            var grid = $("#grid").data("kendoGrid");
+
+            $(grid.tbody).on("click", "td", function (e) {
+                if (window.previous_row){
+                    window.previous_row.css("background","")
+                }
+
+                var row = $(this).closest("tr");
+                var rowIdx = $("tr", grid.tbody).index(row);
+                $(row).css("background","#D4E2E2")
+                window.previous_row = row
+
+                //refresh_data_table()
+//                var colIdx = $("td", row).index(this);
+//                alert(rowIdx + '-' + colIdx);
+            });
+}
                 $(document).ready(function() {
                     $("#grid").kendoGrid({
-                         height: 550,
+                         height: 350,
+                        dataBound:onDataBound,
                         sortable: true,
                         reorderable: true,
                         filterable: false,
