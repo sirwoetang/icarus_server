@@ -284,10 +284,10 @@
 										</div>
 									</div>
 									<div class="widget-content">
-										<!-- chart tab nav -->
+								<!-- chart tab nav -->
 										<div class="chart-nav">
 											<strong>Select period: </strong>
-											<ul id="sales-stat-tab">
+											<ul id="solar-stat-tab">
                                                 <li><a href="#day">Daily</a></li>
 												<li class="active"><a href="#week">Weekly</a></li>
 												<li><a href="#month">Monthly</a></li>
@@ -298,12 +298,11 @@
 
 										<!-- chart placeholder-->
 										<div class="chart-content">
-											<div class="demo-flot-chart sales-chart"></div>
+											<div class="demo-flot-chart solar-chart"></div>
 										</div>
 										<!-- end chart placeholder-->
 
 										<hr class="separator">
-
 									</div>
 								</div>
 								<!-- END WIDGET MAIN CHART WITH TABBED CONTENT -->
@@ -352,6 +351,406 @@
 	<script src="../static/assets/js/king-chart-stat.js"></script>
 	<script src="../static/assets/js/king-table.js"></script>
 	<script src="../static/assets/js/king-components.js"></script>
+	<script src="../static/js/data.json"></script>
+<script>
+    	//*******************************************
+	/*	FLOT CHART
+	/********************************************/
+	if( $('.solar-chart').length > 0 ) {
+		$placeholder = $('.solar-chart');
+		$placeholder.attr('data-ctype', '#month');
+		chartWeek(".solar-chart");
+
+		// tabbed chart
+		$('#solar-stat-tab a').click(function(e) {
+			e.preventDefault();
+
+			$chartType = $(this).attr('href');
+
+			// remove active state
+			$('#solar-stat-tab li').removeClass('active');
+			$(this).parents('li').addClass('active');
+
+			if($chartType == '#week') {
+				chartWeek($placeholder);
+			}else if($chartType == '#month') {
+				chartMonth($placeholder);
+            }else if($chartType == '#day') {
+				chartDay($placeholder);
+			}else if($chartType == '#year') {
+				chartYear($placeholder);
+			}
+
+			$placeholder.attr('data-ctype', $chartType);
+		});
+
+		var previousPoint = null;
+	}
+
+
+	// init flot chart: current week
+	function chartDay(placeholder) {
+
+        var base = []
+        var solar = []
+        console.log(window.previous_row)
+        console.log("Should get vehicle id here to display corresponding data")
+        for (i = 0; i < solar_data.length; i++) {
+//            base.push([solar_data[i]['t'],solar_data[i]['BASE']])
+            solar.push([solar_data[i]['t'],solar_data[i]['v1']])
+        }
+
+        /*
+		var base = [
+			[gt(2015, 03, 25), 310], [gt(2015, 03, 25), 205], [gt(2015, 03, 25), 250], [gt(2015, 03, 26), 230], [gt(2015, 03, 27), 270], [gt(2015, 03, 28), 110], [gt(2015, 03, 29), 55]
+		];
+
+		var solar = [
+			[gt(2015, 03, 23), 210], [gt(2015, 03, 24),20], [gt(2015, 03, 25),50], [gt(2015, 03, 26),130], [gt(2015, 03, 27),45], [gt(2015, 03, 28),20], [gt(2015, 03, 29),30]
+		];
+        */
+
+		var plot = $.plot(placeholder,
+			[
+//				{
+//					data: base,
+//					label: "Base",
+//					lines: {
+//						show: true,
+//						lineWidth: 2,
+//						fill: true,
+//					},
+//					points: {
+//						show: true,
+//						lineWidth: 3,
+//						fill: true,
+//						fillColor: "#fafafa"
+//					}
+//				},
+				{
+					data: solar,
+					label: "Solar Power (kW)",
+					lines: {
+						show: true,
+						fill: true
+					},
+					points: {
+						show: true,
+						fill: true,
+						fillColor: "#009933"
+					},
+				}
+			],
+
+			{
+			series: {
+				lines: {
+					lineWidth: 2,
+					fillColor: { colors: [ { opacity: 0.1 }, { opacity: 0.1 } ] }
+				},
+				points: {
+					lineWidth: 3,
+				},
+
+				shadowSize: 0
+			},
+			grid: {
+				hoverable: true,
+				clickable: true,
+				borderWidth: 0,
+				tickColor: "#E4E4E4"
+			},
+			colors: ["#E7A13D", "#009933"],
+			yaxis: {
+				font: { color: "#555" },
+				ticks: 8
+			},
+			xaxis: {
+                mode: "time",minTickSize: [1, "hour"],
+                min:1431648000,
+                max:1431734400
+
+                //min: (new Date('1431648000')).getTime(),
+                //max: (new Date('1431734400')).getTime()
+			},
+			legend: {
+				labelBoxBorderColor: "transparent",
+				backgroundColor: "transparent"
+			},
+			tooltip: true,
+			tooltipOpts: {
+				content: '%s: %y'
+			}
+
+		});
+	}
+
+            // init flot chart: current week
+	function chartWeek(placeholder) {
+
+//		var base = [
+//			[gt(2015, 03, 23), 310], [gt(2015, 03, 24), 205], [gt(2015, 03, 25), 250], [gt(2015, 03, 26), 230], [gt(2015, 03, 27), 270], [gt(2015, 03, 28), 110], [gt(2015, 03, 29), 55]
+//		];
+
+		var solar = [
+			[gt(2015, 03, 23), 210], [gt(2015, 03, 24),20], [gt(2015, 03, 25),50], [gt(2015, 03, 26),130], [gt(2015, 03, 27),45], [gt(2015, 03, 28),20], [gt(2015, 03, 29),30]
+		];
+
+		var plot = $.plot(placeholder,
+			[
+//				{
+//					data: base,
+//					label: "Base",
+//					lines: {
+//						show: true,
+//						lineWidth: 2,
+//						fill: true,
+//					},
+//					points: {
+//						show: true,
+//						lineWidth: 3,
+//						fill: true,
+//						fillColor: "#fafafa"
+//					}
+//				},
+				{
+					data: solar,
+					label: "Solar",
+					lines: {
+						show: true,
+						fill: true
+					},
+					points: {
+						show: true,
+						fill: true,
+						fillColor: "#009933"
+					},
+				}
+			],
+
+			{
+			series: {
+				lines: {
+					lineWidth: 2,
+					fillColor: { colors: [ { opacity: 0.1 }, { opacity: 0.1 } ] }
+				},
+				points: {
+					lineWidth: 3,
+				},
+
+				shadowSize: 0
+			},
+			grid: {
+				hoverable: true,
+				clickable: true,
+				borderWidth: 0,
+				tickColor: "#E4E4E4"
+			},
+			colors: ["#E7A13D", "#009933"],
+			yaxis: {
+				font: { color: "#555" },
+				ticks: 8
+			},
+			xaxis: {
+				mode: "time",
+				timezone: "browser",
+				minTickSize: [1, "hour"],
+				timeformat: "%a",
+				font: { color: "#555" },
+				tickColor: "#fafafa",
+				autoscaleMargin: 0.02
+			},
+			legend: {
+				labelBoxBorderColor: "transparent",
+				backgroundColor: "transparent"
+			},
+			tooltip: true,
+			tooltipOpts: {
+				content: '%s: %y'
+			}
+
+		});
+	}
+
+
+	// init flot chart: current month
+	function chartMonth(placeholder) {
+
+//		var visit = [
+//			[gt(2013, 10, 1), 100], [gt(2013, 10, 2), 140], [gt(2013, 10, 3), 160], [gt(2013, 10, 4),190], [gt(2013, 10, 5),170], [gt(2013, 10, 6), 200], [gt(2013, 10, 7), 220],
+//			[gt(2013, 10, 8), 250], [gt(2013, 10, 9),280], [gt(2013, 10, 10), 240], [gt(2013, 10, 11), 250], [gt(2013, 10, 12), 260], [gt(2013, 10, 13), 300], [gt(2013, 10, 14), 320],
+//			[gt(2013, 10, 15), 330], [gt(2013, 10, 16), 370], [gt(2013, 10, 17), 390], [gt(2013, 10, 18), 350], [gt(2013, 10, 19), 340], [gt(2013, 10, 20), 320], [gt(2013, 10, 21), 370],
+//			[gt(2013, 10, 22), 400], [gt(2013, 10, 23), 440], [gt(2013, 10, 24), 450], [gt(2013, 10, 25), 470], [gt(2013, 10, 26), 450], [gt(2013, 10, 27), 500], [gt(2013, 10, 28), 540],
+//			[gt(2013, 10, 29), 600], [gt(2013, 10, 30), 580], [gt(2013, 10, 31), 620]
+//		];
+
+		var val = [
+			[gt(2013, 10, 1), 20], [gt(2013, 10, 2), 28], [gt(2013, 10, 3), 32], [gt(2013, 10, 4), 40], [gt(2013, 10, 5), 35], [gt(2013, 10, 6), 40], [gt(2013, 10, 7), 45],
+			[gt(2013, 10, 8), 25], [gt(2013, 10, 9), 60], [gt(2013, 10, 10), 48], [gt(2013, 10, 11), 53], [gt(2013, 10, 12), 58], [gt(2013, 10, 13), 60], [gt(2013, 10, 14), 65],
+			[gt(2013, 10, 15), 66], [gt(2013, 10, 16), 60], [gt(2013, 10, 17), 79], [gt(2013, 10, 18), 75], [gt(2013, 10, 19), 34], [gt(2013, 10, 20), 32], [gt(2013, 10, 21), 75],
+			[gt(2013, 10, 22), 88], [gt(2013, 10, 23), 99], [gt(2013, 10, 24), 86], [gt(2013, 10, 25), 83], [gt(2013, 10, 26), 45], [gt(2013, 10, 27), 50], [gt(2013, 10, 28), 100],
+			[gt(2013, 10, 29), 125], [gt(2013, 10, 30), 110], [gt(2013, 10, 31), 130]
+		];
+
+		var plot = $.plot(placeholder,
+			[
+//				{
+//					data: visit,
+//					label: "Visits",
+//					bars: {
+//						show: true,
+//						fill: false,
+//						barWidth: 0.1,
+//						align: "center",
+//						lineWidth: 18
+//					}
+//				},
+				{
+					data: val,
+					label: "Solar Power (kW)"
+				}
+			],
+
+			{
+				series: {
+					lines: {
+						show: true,
+						lineWidth: 2,
+						fill: false
+					},
+					points: {
+						show: true,
+						lineWidth: 3,
+						fill: true,
+						fillColor: "#009933"
+					},
+					shadowSize: 0
+				},
+				grid: {
+					hoverable: true,
+					clickable: true,
+					borderWidth: 0,
+					tickColor: "#E4E4E4",
+
+				},
+				colors: ["#009933", "#009933"],
+				yaxis: {
+					font: { color: "#555" },
+					ticks: 8,
+				},
+				xaxis: {
+					mode: "time",
+					timezone: "browser",
+					minTickSize: [1, "day"],
+					font: { color: "#555" },
+					tickColor: "#fafafa",
+					autoscaleMargin: 0.02
+				},
+				legend: {
+					labelBoxBorderColor: "transparent",
+					backgroundColor: "transparent"
+				},
+				tooltip: true,
+				tooltipOpts: {
+					content: '%s: %y'
+				}
+			}
+		);
+
+	}
+
+	// init flot chart: current year
+	function chartYear(placeholder) {
+
+//		var visit = [
+//			[gt(2013, 1, 1), 200], [gt(2013, 2, 1), 300], [gt(2013, 3, 1), 360], [gt(2013, 4, 1), 340], [gt(2013, 5, 1), 440], [gt(2013, 6, 1), 600], [gt(2013, 7, 1), 1050],
+//			[gt(2013, 8, 1), 1700], [gt(2013, 9, 1), 1100], [gt(2013, 10, 1), 1200], [gt(2013, 11, 1), 1300], [gt(2013, 12, 1), 1500]
+//		];
+
+		var val = [
+			[gt(2013, 1, 1), 100], [gt(2013, 2, 1), 155], [gt(2013, 3, 1), 180], [gt(2013, 4, 1), 172], [gt(2013, 5, 1), 222], [gt(2013, 6, 1), 300], [gt(2013, 7, 1), 550],
+			[gt(2013, 8, 1), 452], [gt(2013, 9, 1), 552], [gt(2013, 10, 1), 600], [gt(2013, 11, 1), 680], [gt(2013, 12, 1), 750]
+		];
+
+		var plot = $.plot(placeholder,
+			[
+//				{
+//					data: visit,
+//					label: "Visits"
+//				},
+				{
+					data: val,
+					label: "Solar Power (kW)"
+
+				}
+			],
+
+			{
+				series: {
+					lines: {
+						show: true,
+						lineWidth: 2,
+						fill: false
+					},
+					points: {
+						show: true,
+						lineWidth: 3,
+						fill: true,
+						fillColor: "#fafafa"
+					},
+					shadowSize: 0
+				},
+				grid: {
+					hoverable: true,
+					clickable: true,
+					borderWidth: 0,
+					tickColor: "#E4E4E4",
+
+				},
+				colors: ["#d9d9d9", "#5399D6"],
+				yaxis: {
+					font: { color: "#555" },
+					ticks: 8,
+				},
+				xaxis: {
+					mode: "time",
+					timezone: "browser",
+					minTickSize: [1, "month"],
+					font: { color: "#555" },
+					tickColor: "#fafafa",
+					autoscaleMargin: 0.02
+				},
+				legend: {
+					labelBoxBorderColor: "transparent",
+					backgroundColor: "transparent"
+				},
+				tooltip: true,
+				tooltipOpts: {
+					content: '%s: %y'
+				}
+			}
+		);
+	}
+        	// get day function
+	function gt(y, m, d) {
+		return new Date(y, m-1, d).getTime();
+	}
+
+	function strtime(time_str) {
+		return new Date.parse(time_str);
+	}
+
+
+	function donutLabelFormatter(label, series) {
+		return "<div class=\"donut-label\">" + label + "<br/>" + Math.round(series.percent) + "%</div>";
+	}
+
+	function randomVal(){
+			return Math.floor( Math.random() * 80 );
+	}
+
+
+</script>
 
 </body>
 </html>
