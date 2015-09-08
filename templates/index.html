@@ -288,8 +288,8 @@
 										<div class="chart-nav">
 											<strong>Select period: </strong>
 											<ul id="solar-stat-tab">
-                                                <li><a href="#day">Daily</a></li>
-												<li class="active"><a href="#week">Weekly</a></li>
+                                                <li class="active"><a href="#day">Daily</a></li>
+												<li><a href="#week">Weekly</a></li>
 												<li><a href="#month">Monthly</a></li>
 												<li><a href="#year">Annually</a></li>
 											</ul>
@@ -359,7 +359,7 @@
 	if( $('.solar-chart').length > 0 ) {
 		$placeholder = $('.solar-chart');
 		$placeholder.attr('data-ctype', '#month');
-		chartWeek(".solar-chart");
+		chartDay(".solar-chart");
 
 		// tabbed chart
 		$('#solar-stat-tab a').click(function(e) {
