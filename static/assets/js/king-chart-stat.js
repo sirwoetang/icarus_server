@@ -302,7 +302,7 @@
 						fill: true,
 					},
 					points: {
-						show: true, 
+						show: true,
 						lineWidth: 3,
 						fill: true,
 						fillColor: "#fafafa"

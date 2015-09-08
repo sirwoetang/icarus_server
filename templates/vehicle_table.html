@@ -385,9 +385,7 @@
                 $(row).css("background","#D4E2E2")
                 window.previous_row = row
 
-                //refresh_data_table()
-//                var colIdx = $("td", row).index(this);
-//                alert(rowIdx + '-' + colIdx);
+
             });
 }
                 $(document).ready(function() {
@@ -462,24 +460,24 @@
 
 		var plot = $.plot(placeholder,
 			[
-				{
-					data: base,
-					label: "Base",
-					lines: {
-						show: true,
-						lineWidth: 2,
-						fill: true,
-					},
-					points: {
-						show: true,
-						lineWidth: 3,
-						fill: true,
-						fillColor: "#fafafa"
-					}
-				},
+//				{
+//					data: base,
+//					label: "Base",
+//					lines: {
+//						show: true,
+//						lineWidth: 2,
+//						fill: true,
+//					},
+//					points: {
+//						show: true,
+//						lineWidth: 3,
+//						fill: true,
+//						fillColor: "#fafafa"
+//					}
+//				},
 				{
 					data: solar,
-					label: "Solar",
+					label: "Solar Power (kW)",
 					lines: {
 						show: true,
 						fill: true
@@ -538,9 +536,9 @@
             // init flot chart: current week
 	function chartWeek(placeholder) {
 
-		var base = [
-			[gt(2015, 03, 23), 310], [gt(2015, 03, 24), 205], [gt(2015, 03, 25), 250], [gt(2015, 03, 26), 230], [gt(2015, 03, 27), 270], [gt(2015, 03, 28), 110], [gt(2015, 03, 29), 55]
-		];
+//		var base = [
+//			[gt(2015, 03, 23), 310], [gt(2015, 03, 24), 205], [gt(2015, 03, 25), 250], [gt(2015, 03, 26), 230], [gt(2015, 03, 27), 270], [gt(2015, 03, 28), 110], [gt(2015, 03, 29), 55]
+//		];
 
 		var solar = [
 			[gt(2015, 03, 23), 210], [gt(2015, 03, 24),20], [gt(2015, 03, 25),50], [gt(2015, 03, 26),130], [gt(2015, 03, 27),45], [gt(2015, 03, 28),20], [gt(2015, 03, 29),30]
@@ -548,21 +546,21 @@
 
 		var plot = $.plot(placeholder,
 			[
-				{
-					data: base,
-					label: "Base",
-					lines: {
-						show: true,
-						lineWidth: 2,
-						fill: true,
-					},
-					points: {
-						show: true,
-						lineWidth: 3,
-						fill: true,
-						fillColor: "#fafafa"
-					}
-				},
+//				{
+//					data: base,
+//					label: "Base",
+//					lines: {
+//						show: true,
+//						lineWidth: 2,
+//						fill: true,
+//					},
+//					points: {
+//						show: true,
+//						lineWidth: 3,
+//						fill: true,
+//						fillColor: "#fafafa"
+//					}
+//				},
 				{
 					data: solar,
 					label: "Solar",
@@ -626,13 +624,13 @@
 	// init flot chart: current month
 	function chartMonth(placeholder) {
 
-		var visit = [
-			[gt(2013, 10, 1), 100], [gt(2013, 10, 2), 140], [gt(2013, 10, 3), 160], [gt(2013, 10, 4),190], [gt(2013, 10, 5),170], [gt(2013, 10, 6), 200], [gt(2013, 10, 7), 220],
-			[gt(2013, 10, 8), 250], [gt(2013, 10, 9),280], [gt(2013, 10, 10), 240], [gt(2013, 10, 11), 250], [gt(2013, 10, 12), 260], [gt(2013, 10, 13), 300], [gt(2013, 10, 14), 320],
-			[gt(2013, 10, 15), 330], [gt(2013, 10, 16), 370], [gt(2013, 10, 17), 390], [gt(2013, 10, 18), 350], [gt(2013, 10, 19), 340], [gt(2013, 10, 20), 320], [gt(2013, 10, 21), 370],
-			[gt(2013, 10, 22), 400], [gt(2013, 10, 23), 440], [gt(2013, 10, 24), 450], [gt(2013, 10, 25), 470], [gt(2013, 10, 26), 450], [gt(2013, 10, 27), 500], [gt(2013, 10, 28), 540],
-			[gt(2013, 10, 29), 600], [gt(2013, 10, 30), 580], [gt(2013, 10, 31), 620]
-		];
+//		var visit = [
+//			[gt(2013, 10, 1), 100], [gt(2013, 10, 2), 140], [gt(2013, 10, 3), 160], [gt(2013, 10, 4),190], [gt(2013, 10, 5),170], [gt(2013, 10, 6), 200], [gt(2013, 10, 7), 220],
+//			[gt(2013, 10, 8), 250], [gt(2013, 10, 9),280], [gt(2013, 10, 10), 240], [gt(2013, 10, 11), 250], [gt(2013, 10, 12), 260], [gt(2013, 10, 13), 300], [gt(2013, 10, 14), 320],
+//			[gt(2013, 10, 15), 330], [gt(2013, 10, 16), 370], [gt(2013, 10, 17), 390], [gt(2013, 10, 18), 350], [gt(2013, 10, 19), 340], [gt(2013, 10, 20), 320], [gt(2013, 10, 21), 370],
+//			[gt(2013, 10, 22), 400], [gt(2013, 10, 23), 440], [gt(2013, 10, 24), 450], [gt(2013, 10, 25), 470], [gt(2013, 10, 26), 450], [gt(2013, 10, 27), 500], [gt(2013, 10, 28), 540],
+//			[gt(2013, 10, 29), 600], [gt(2013, 10, 30), 580], [gt(2013, 10, 31), 620]
+//		];
 
 		var val = [
 			[gt(2013, 10, 1), 20], [gt(2013, 10, 2), 28], [gt(2013, 10, 3), 32], [gt(2013, 10, 4), 40], [gt(2013, 10, 5), 35], [gt(2013, 10, 6), 40], [gt(2013, 10, 7), 45],
@@ -644,20 +642,20 @@
 
 		var plot = $.plot(placeholder,
 			[
-				{
-					data: visit,
-					label: "Visits",
-					bars: {
-						show: true,
-						fill: false,
-						barWidth: 0.1,
-						align: "center",
-						lineWidth: 18
-					}
-				},
+//				{
+//					data: visit,
+//					label: "Visits",
+//					bars: {
+//						show: true,
+//						fill: false,
+//						barWidth: 0.1,
+//						align: "center",
+//						lineWidth: 18
+//					}
+//				},
 				{
 					data: val,
-					label: "Sales"
+					label: "Solar Power (kW)"
 				}
 			],
 
@@ -672,7 +670,7 @@
 						show: true,
 						lineWidth: 3,
 						fill: true,
-						fillColor: "#fafafa"
+						fillColor: "#009933"
 					},
 					shadowSize: 0
 				},
@@ -683,7 +681,7 @@
 					tickColor: "#E4E4E4",
 
 				},
-				colors: ["rgba(217,217,217, 0.3)", "#d7ea2b"],
+				colors: ["#009933", "#009933"],
 				yaxis: {
 					font: { color: "#555" },
 					ticks: 8,
@@ -712,10 +710,10 @@
 	// init flot chart: current year
 	function chartYear(placeholder) {
 
-		var visit = [
-			[gt(2013, 1, 1), 200], [gt(2013, 2, 1), 300], [gt(2013, 3, 1), 360], [gt(2013, 4, 1), 340], [gt(2013, 5, 1), 440], [gt(2013, 6, 1), 600], [gt(2013, 7, 1), 1050],
-			[gt(2013, 8, 1), 1700], [gt(2013, 9, 1), 1100], [gt(2013, 10, 1), 1200], [gt(2013, 11, 1), 1300], [gt(2013, 12, 1), 1500]
-		];
+//		var visit = [
+//			[gt(2013, 1, 1), 200], [gt(2013, 2, 1), 300], [gt(2013, 3, 1), 360], [gt(2013, 4, 1), 340], [gt(2013, 5, 1), 440], [gt(2013, 6, 1), 600], [gt(2013, 7, 1), 1050],
+//			[gt(2013, 8, 1), 1700], [gt(2013, 9, 1), 1100], [gt(2013, 10, 1), 1200], [gt(2013, 11, 1), 1300], [gt(2013, 12, 1), 1500]
+//		];
 
 		var val = [
 			[gt(2013, 1, 1), 100], [gt(2013, 2, 1), 155], [gt(2013, 3, 1), 180], [gt(2013, 4, 1), 172], [gt(2013, 5, 1), 222], [gt(2013, 6, 1), 300], [gt(2013, 7, 1), 550],
@@ -724,13 +722,13 @@
 
 		var plot = $.plot(placeholder,
 			[
-				{
-					data: visit,
-					label: "Visits"
-				},
+//				{
+//					data: visit,
+//					label: "Visits"
+//				},
 				{
 					data: val,
-					label: "Sales"
+					label: "Solar Power (kW)"
 
 				}
 			],
