@@ -79,15 +79,31 @@ class User(db.Model):
 class Event(db.Model):
     __tablename__ = "event"
     id = db.Column(db.Integer, primary_key=True)
-    type = db.Column(db.String(80))
-    value=db.Column(db.Float(10))
     device_id=db.Column(db.Numeric(10))
+    v1=db.Column(db.Float(10))
+    v2=db.Column(db.Float(10))
+    v3=db.Column(db.Float(10))
+    v4=db.Column(db.Float(10))
+    v5=db.Column(db.Float(10))
+    v6=db.Column(db.Float(10))
+    v7=db.Column(db.Float(10))
+    v8=db.Column(db.Float(10))
+    v9=db.Column(db.Float(10))
+    device_time = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     created_on = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 
-    def __init__(self, type, value, device_id):
-        self.type = type
-        self.value = value
+    def __init__(self, device_id, v1, v2, v3, v4, v5, v6, v7, v8, v9,device_time):
         self.device_id = device_id
+        self.v1 = v1
+        self.v2 = v2
+        self.v3 = v3
+        self.v4 = v4
+        self.v5 = v5
+        self.v6 = v6
+        self.v7 = v7
+        self.v8 = v8
+        self.v9 = v9
+        self.device_time = device_time
 
 print("Classes Created...")
 db.create_all()
@@ -147,20 +163,38 @@ def api_solar_logger():
     if request.method == 'GET':
         print('GET')
     else:
-        print('OTHER')
+        # print('OTHER')
+        pass
 
-    if 'type' in content:
-        try:
-            event = Event(content['type'],content['value'],content['device_id'])
-            db.session.add(event)
-            db.session.commit()
-            print("Success")
-            return 'Success'
-        except Exception:
-            db.session.rollback()
-            print("Failure")
-            return 'Failure'
-    return 'Failure'
+    # if 'type' in content:
+    #     try:
+    #         event = Event(content['type'],content['value'],content['device_id'])
+    #         db.session.add(event)
+    #         db.session.commit()
+    #         print("Success")
+    #         return 'Success'
+    #     except Exception:
+    #         db.session.rollback()
+    #         print("Failure")
+    #         return 'Failure'
+
+
+    if "id" in content:
+        for datum in content['data']:
+            try:
+                event = Event(device_id=content['id'],v1=datum['v1'],
+                          v2=datum['v2'],v3=datum['v3'],
+                          v4=datum['v4'],v5=datum['v5'],
+                          v6=datum['v6'],v7=datum['v7'],
+                          v8=datum['v8'],v9=datum['v9'],
+                          device_time=datum['t1'])
+                db.session.add(event)
+                db.session.commit()
+            except Exception:
+                db.session.rollback()
+                return 'Failure'
+
+    return 'Success'
 
 if __name__ == '__main__':
     # Bind to PORT if defined, otherwise default to 5000.
