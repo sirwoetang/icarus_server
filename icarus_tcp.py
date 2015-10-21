@@ -44,6 +44,8 @@ class client(Thread):
                 print('Client sent:',db_events )
                 self.sock.send(b'Success')
             except Exception as e:
+                self.sock.send(b'Failure')
+
                 break
 
 
