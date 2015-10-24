@@ -32,4 +32,6 @@ service gunicorn restart
 sudo start icarus
 sudo start icarus_tcp //listens on localhost 8888
 
+solartruckingisbadass
+
 logs: sudo /var/log/upstart/icarus.log only right after server has been restarted
