@@ -27,10 +27,15 @@ class client(Thread):
     def run(self):
         while 1:
             # try:
-
             try:
                 json_load = self.sock.recv(1024).decode()
                 print(json_load)
+            except:
+                json_load = self.sock.recv(1024)
+                print(json_load)
+
+            try:
+
                 db_events = json.loads(json_load)
                 from icarus_server import db, Event
                 for db_event in db_events['data']:
