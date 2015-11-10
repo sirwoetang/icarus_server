@@ -29,9 +29,11 @@ class client(Thread):
             # try:
             try:
                 json_load = self.sock.recv(1024).decode()
+                print("1024 Decoded Load:")
                 print(json_load)
             except:
                 json_load = self.sock.recv(1024)
+                print("1024 Un-Decoded Load:")
                 print(json_load)
 
             try:
@@ -51,8 +53,10 @@ class client(Thread):
                 print('Client sent:',db_events )
                 self.sock.send(b'Success')
             except Exception as e:
-                self.sock.send(b'Failure')
-
+                try:
+                    self.sock.send(b'Failure')
+                except Exception as e2:
+                    print("Connection Prematurely Terminated")
                 break
 
 
