@@ -35,3 +35,5 @@ sudo start icarus_tcp //listens on localhost 8888
 solartruckingisbadass
 
 logs: sudo /var/log/upstart/icarus.log only right after server has been restarted
+
+HAD TO RUN THIS: sudo chown -R username:group directory
